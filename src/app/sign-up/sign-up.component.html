@@ -1,0 +1,50 @@
+<section>
+  <app-ptc-toolbar></app-ptc-toolbar>
+
+  <mat-card>
+    <mat-card-title class="card-items padding-20">Sign Up to PTC Scorer</mat-card-title>
+
+    <form [formGroup]="signUpForm">
+      <mat-card-content class="card-items">
+
+        <mat-form-field>
+          <input matInput type="email" formControlName="email" placeholder="Email Address" required>
+          <mat-error *ngIf="signUpForm.controls['email'].invalid">{{getErrorMessage('email')}}</mat-error>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field>
+          <input matInput type="password" formControlName="password1" required placeholder="Password">
+          <mat-error *ngIf="signUpForm.controls['password1'].invalid">{{getErrorMessage('password1')}}</mat-error>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field>
+          <input matInput type="password" formControlName="password2" required placeholder="Retype Password">
+          <mat-error *ngIf="signUpForm.controls['password2'].invalid">{{getErrorMessage('password2')}}</mat-error>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field>
+          <input matInput type="text" formControlName="first_name" required placeholder="First Name">
+          <mat-error *ngIf="signUpForm.controls['first_name'].invalid">{{getErrorMessage('first_name')}}</mat-error>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field>
+          <input matInput type="text" formControlName="last_name" required placeholder="Last Name">
+          <mat-error *ngIf="signUpForm.controls['last_name'].invalid">{{getErrorMessage('last_name')}}</mat-error>
+        </mat-form-field>
+        <br>
+
+      </mat-card-content>
+
+      <mat-card-actions class="card-items">
+        <button mat-raised-button type="submit" (click)="onSubmit()" color="primary">Submit</button>
+      </mat-card-actions>
+
+
+    </form>
+  </mat-card>
+
+</section>

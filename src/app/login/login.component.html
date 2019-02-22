@@ -1,0 +1,37 @@
+<section>
+
+  <app-ptc-toolbar></app-ptc-toolbar>
+
+  <mat-card>
+    <mat-card-title class="card-items padding-20">Log in to your account</mat-card-title>
+
+    <form [formGroup]="loginForm">
+      <mat-card-content class="card-items">
+
+              <mat-form-field>
+                <input matInput type="email" formControlName="email" placeholder="Email Address" required>
+                <mat-error *ngIf="loginForm.controls['email'].invalid">{{getErrorMessage('email')}}</mat-error>
+              </mat-form-field>
+              <br>
+
+              <mat-form-field>
+                <input matInput type="password" formControlName="password" required placeholder="Password">
+                <mat-error *ngIf="loginForm.controls['password'].invalid">{{getErrorMessage('password')}}</mat-error>
+              </mat-form-field>
+
+      </mat-card-content>
+
+      <mat-card-actions class="card-items">
+        <button mat-raised-button type="submit" (click)="onSubmit()" color="primary">Log in</button>
+      </mat-card-actions>
+
+      <p class="card-items font-style">New to PTC Scorer?
+        <a [routerLink]="['/sign-up']" queryParamsHandling="preserve">Sign Up</a>
+      </p>
+
+
+    </form>
+  </mat-card>
+
+</section>
+

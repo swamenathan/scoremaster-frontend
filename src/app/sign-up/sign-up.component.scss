@@ -1,0 +1,42 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //height: 768px;
+  max-width: 400px;
+}
+
+.flex-item {
+  text-align: center;
+}
+
+.card-style {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1280px;
+  height: 768px;
+}
+
+.card-items {
+  text-align: center;
+}
+
+.toolbar-style {
+  margin: auto;
+}
+
+.padding-20 {
+  padding-bottom: 20px;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.font-style {
+  font-size: 12px;
+}
+
