@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ILoginDetails} from '../interfaces/auth.interface';
 import {ErrorMessageService} from '../services/error-message.service';
 import {LoginService} from '../services/login.service';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private errorMessageService: ErrorMessageService,
-    private loginService: LoginService) {
+    private loginService: LoginService,
+    private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -38,6 +41,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(loginDetail).subscribe(res => {
         console.log('Welcome! You are now logged in = ', res);
+        this.router.navigate(['./points-table']);
       },
       error => {
         const MyError: any = error.error;

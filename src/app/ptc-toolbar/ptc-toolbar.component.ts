@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LogOutService} from '../services/log-out.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-ptc-toolbar',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PtcToolbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private logoutService: LogOutService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
   }
 
+  onLogout()
+  {
+    this.logoutService.logout().subscribe(res => {
+      console.log('Logout successful');
+      this.router.navigate(['./login']);
+    });
+  }
 }

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ISignUpDetails} from '../interfaces/auth.interface';
 import {ErrorMessageService} from '../services/error-message.service';
 import { SignUpService } from '../services/sign-up.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class SignUpComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private errorMessageService: ErrorMessageService,
-    private signUpService: SignUpService
+    private signUpService: SignUpService,
+    private router: Router
   ) {
     this.signUpForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -50,6 +52,7 @@ export class SignUpComponent implements OnInit {
 
     this.signUpService.signup(signUpDetails).subscribe(res => {
         console.log('Welcome! You are now logged in = ', res);
+        this.router.navigate(['./points-table']);
       },
       error => {
         const MyError: any = error.error;
