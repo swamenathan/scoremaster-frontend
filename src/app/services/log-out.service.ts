@@ -19,9 +19,11 @@ export class LogOutService {
 
   logout() {
     const options = {
-      headers: new HttpHeaders().set('Authorization', 'JWT ' + (this.credentialService.getToken ))
+      headers: new HttpHeaders()
+        .set('Authorization', 'JWT ' + (this.credentialService.getToken ))
         .set('Content-Type', 'application/json')
     };
+    console.log('options = ', options);
 
     return this.http.post<IAuthInterface>(environment.logoutUrl, options).pipe(
       tap(res => {

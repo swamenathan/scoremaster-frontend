@@ -7,7 +7,10 @@ const apiUrl = 'http://127.0.0.1:8000';
 
 export const environment = {
   loginUrl: apiUrl + '/auth/login/',
+  logoutUrl: apiUrl + '/auth/logout/',
   signUpUrl: apiUrl + '/auth/registration/',
+  teamsUrl: apiUrl + '/teams/',
+  matchUrl: apiUrl + '/match/',
 };
 
 /*

@@ -10,7 +10,8 @@ export class CredentialService {
 
   public get getToken(): string {
     try {
-      const data: string = localStorage.getItem('auth');
+      const data: string = JSON.parse(localStorage.getItem('auth')).token;
+      console.log('token = ', data);
       if (data != null) {
         return data;
       }

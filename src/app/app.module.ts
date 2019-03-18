@@ -8,7 +8,7 @@ import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule, MatInputModule, MatButtonModule, MatDividerModule} from '@angular/material';
-import { MatCardModule, MatToolbarModule, MatIconModule, MatMenuModule, MatListModule } from '@angular/material';
+import { MatCardModule, MatToolbarModule, MatIconModule, MatMenuModule, MatListModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { MatExpansionModule } from '@angular/material';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { PtcToolbarComponent } from './ptc-toolbar/ptc-toolbar.component';
@@ -45,6 +45,8 @@ import {LogOutService} from './services/log-out.service';
     MatListModule,
     MatDividerModule,
     MatExpansionModule,
+    MatOptionModule,
+    MatSelectModule
 
   ],
   providers: [],
