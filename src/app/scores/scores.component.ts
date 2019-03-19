@@ -5,6 +5,7 @@ import {ScoresService} from '../services/scores.service';
 import {forEach} from '@angular/router/src/utils/collection';
 import {of} from 'rxjs';
 import {toArray} from 'rxjs/operators';
+import index from '@angular/cdk/schematics/ng-add';
 
 @Component({
   selector: 'app-scores',
@@ -42,9 +43,9 @@ export class ScoresComponent implements OnInit {
     console.log('print inside onSubmit', this.team2_selected + ' ' + this.team1_selected);
     this.scoresService.getMatches(this.team1_selected, this.team2_selected).subscribe(res => {
       this.matchs = res;
-      console.log('teams = ', JSON.stringify(this.teams));
+      console.log('teams = ', this.teams);
+
       for (const team of this.teams) {
-        console.log('team = ', team);
         if (team.id === this.team1_selected) {
           this.team1_name = team.team_name;
         }

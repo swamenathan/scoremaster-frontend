@@ -3,6 +3,8 @@ export interface ITeams {
   team_name: string;
   main_player: number;
   partner_player: number;
+  seeding_points: number;
+  rr_points: number;
 }
 
 export interface IMatch {

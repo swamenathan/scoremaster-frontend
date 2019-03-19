@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ScoresService} from '../services/scores.service';
+import {ITeams} from '../interfaces/game.interface';
+
 
 @Component({
   selector: 'app-points-table',
@@ -7,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PointsTableComponent implements OnInit {
 
-  constructor() { }
+  public teams: ITeams;
+
+  constructor(
+    private scoresService: ScoresService,
+  ) {
+    this.getTeams();
+
+  }
+  displayedColumns: string[] =  ['name', 'seeding', 'robin'];
+
 
   ngOnInit() {
   }
+
+  getTeams() {
+    this.scoresService.getTeams().subscribe(res => {
+      this.teams = res;
+    }, error => {
+      const MyError: any = error.error;
+      console.log(MyError);
+    });
+  }
+
 
 }

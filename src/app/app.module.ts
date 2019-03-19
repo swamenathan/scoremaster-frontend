@@ -7,7 +7,7 @@ import { LoginComponent } from './login/login.component';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule, MatInputModule, MatButtonModule, MatDividerModule} from '@angular/material';
+import {MatFormFieldModule, MatInputModule, MatButtonModule, MatDividerModule, MatTableModule, MatTabsModule} from '@angular/material';
 import { MatCardModule, MatToolbarModule, MatIconModule, MatMenuModule, MatListModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { MatExpansionModule } from '@angular/material';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -15,6 +15,7 @@ import { PtcToolbarComponent } from './ptc-toolbar/ptc-toolbar.component';
 import { PointsTableComponent } from './points-table/points-table.component';
 import { ScoresComponent } from './scores/scores.component';
 import {LogOutService} from './services/log-out.service';
+import { KnockoutComponent } from './knockout/knockout.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {LogOutService} from './services/log-out.service';
     PtcToolbarComponent,
     PointsTableComponent,
     ScoresComponent,
+    KnockoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,8 +48,9 @@ import {LogOutService} from './services/log-out.service';
     MatDividerModule,
     MatExpansionModule,
     MatOptionModule,
-    MatSelectModule
-
+    MatSelectModule,
+    MatTableModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
