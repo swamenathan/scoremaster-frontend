@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CredentialService} from './credential.service';
 import {environment} from '../../environments/environment';
-import {IMatch, ITeams} from '../interfaces/game.interface';
+import {IMatch, IScore, ITeams} from '../interfaces/game.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -26,13 +26,31 @@ export class ScoresService {
 
   getTeams() {
     const options = this.setHeaders();
-    console.log('options = ', options);
-    return this.http.get<ITeams>(environment.teamsUrl, options);
+
+    return this.http.get<ITeams[]>(environment.teamsUrl, options);
   }
 
   getMatches(team1: string, team2: string) {
     const options = this.setHeaders();
 
-    return this.http.get<IMatch>(environment.matchUrl + '?' + 'team_1=' + team1 + '&team_2=' + team2, options);
+    return this.http.get<IMatch[]>(environment.matchUrl + '?' + 'team_1=' + team1 + '&team_2=' + team2, options);
+  }
+
+  getAllMatches() {
+    const options = this.setHeaders();
+
+    return this.http.get<IMatch[]>(environment.matchUrl, options);
+  }
+
+  getTeam(player: number) {
+    const options = this.setHeaders();
+
+    return this.http.get<ITeams>(environment.teamUrl + player, options);
+  }
+
+  postScore(score: IScore) {
+    const options = this.setHeaders();
+
+    return this.http.post<IScore>(environment.matchesUrl, score, options);
   }
 }

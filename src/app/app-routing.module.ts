@@ -5,13 +5,16 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import {ScoresComponent} from './scores/scores.component';
 import {PointsTableComponent} from './points-table/points-table.component';
 import {KnockoutComponent} from './knockout/knockout.component';
+import {MatchSubmitComponent} from './match-submit/match-submit.component';
+import {AuthGuardService} from './services/auth-guard.service';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'sign-up', component: SignUpComponent},
-  {path: 'scores', component: ScoresComponent},
-  {path: 'points-table', component: PointsTableComponent},
-  {path: 'knockout', component: KnockoutComponent}
+  {path: 'scores', component: ScoresComponent, canActivate: [AuthGuardService]},
+  {path: 'points-table', component: PointsTableComponent, canActivate: [AuthGuardService]},
+  {path: 'knockout', component: KnockoutComponent, canActivate: [AuthGuardService]},
+  {path: 'submit-score', component: MatchSubmitComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

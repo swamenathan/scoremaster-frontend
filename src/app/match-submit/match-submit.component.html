@@ -1,0 +1,96 @@
+<section>
+  <app-ptc-toolbar></app-ptc-toolbar>
+  <mat-card>
+    <h1 class="card-items title-style">SUBMIT SCORE</h1>
+
+    <p class="card-items">{{myTeamName}}</p>
+    <p class="card-items">Vs</p>
+
+    <form [formGroup]="scoreForm">
+      <mat-card-content class="card-items">
+
+        <mat-form-field>
+          <mat-label>Team 2</mat-label>
+          <mat-select placeholder="Choose Team 2" [(value)]="team_2" required>
+            <mat-option *ngFor="let team of teams" [value]="team.id">
+              {{team.team_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field>
+          <mat-label>Match Type</mat-label>
+          <mat-select placeholder="Match Type" [(value)]="match_type" required>
+            <mat-option *ngFor="let match of matchTypes" [value]="match.value">
+              {{match.desc}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      <table class="center-table">
+        <tr>
+          Team 1:
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="input-style">
+              <input matInput type="text" formControlName="team1_set1" placeholder="1" required >
+              <!--<mat-error *ngIf="scoreForm.controls['team1_set1'].invalid">{{getErrorMessage('set')}}</mat-error>-->
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="input-style">
+              <input matInput type="text" formControlName="team1_set2" placeholder="2" >
+              <!--<mat-error *ngIf="scoreForm.controls['team1_set2'].invalid">{{getErrorMessage('set')}}</mat-error>-->
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="input-style">
+              <input matInput type="text" formControlName="team1_set3" placeholder="3" >
+              <!--<mat-error *ngIf="scoreForm.controls['team1_set3'].invalid">{{getErrorMessage('set')}}</mat-error>-->
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          Team 2:
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="input-style">
+              <input matInput type="text" formControlName="team2_set1" placeholder="1" required>
+              <!--<mat-error *ngIf="scoreForm.controls['team2_set1'].invalid">{{getErrorMessage('set')}}</mat-error>-->
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="input-style">
+              <input matInput type="text" formControlName="team2_set2" placeholder="2" >
+              <!--<mat-error *ngIf="scoreForm.controls['team2_set2'].invalid">{{getErrorMessage('set')}}</mat-error>-->
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="input-style">
+              <input matInput type="text" formControlName="team2_set3" placeholder="3" >
+              <!--<mat-error *ngIf="scoreForm.controls['team2_set3'].invalid">{{getErrorMessage('set')}}</mat-error>-->
+            </mat-form-field>
+          </td>
+        </tr>
+
+      </table>
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Match date" formControlName="match_date" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </mat-card-content>
+
+      <mat-card-actions class="card-items">
+        <button mat-raised-button type="submit" (click)="onSubmit()" color="primary">SUBMIT</button>
+      </mat-card-actions>
+
+
+    </form>
+  </mat-card>
+
+</section>

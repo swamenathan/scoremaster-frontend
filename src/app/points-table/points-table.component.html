@@ -1,22 +1,22 @@
 <section>
   <app-ptc-toolbar></app-ptc-toolbar>
 
-  <table mat-table [dataSource]="teams" >
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <!-- Position Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Team Name </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Team Name </th>
       <td mat-cell *matCellDef="let element"> {{element.team_name}} </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="seeding">
-      <th mat-header-cell *matHeaderCellDef> Seeding Points </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Seeding Points </th>
       <td mat-cell *matCellDef="let element"> {{element.seeding_points}} </td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="robin">
-      <th mat-header-cell *matHeaderCellDef> Round Robin </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Round Robin </th>
       <td mat-cell *matCellDef="let element"> {{element.rr_points}} </td>
     </ng-container>
 

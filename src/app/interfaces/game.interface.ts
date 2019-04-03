@@ -1,16 +1,16 @@
 export interface ITeams {
   id: string;
   team_name: string;
-  main_player: number;
-  partner_player: number;
+  main_player: string;
+  partner_player: string;
   seeding_points: number;
   rr_points: number;
 }
 
 export interface IMatch {
   match_uuid: string;
-  match_type: string;
-  team1_set1: number;
+  match_type: any;
+  team1_set1: any;
   team2_set1: number;
   team1_set2: number;
   team2_set2: number;
@@ -21,4 +21,26 @@ export interface IMatch {
   tournament: number;
   team_1: number;
   team_2: number;
+  team_1_name: string;
+  team_2_name: string;
+}
+
+
+export interface IMatchType {
+  match_key: string;
+  match_value: string;
+}
+
+export interface IScore {
+  match_type: string;
+  team1_set1: any;
+  team2_set1: any;
+  team1_set2: any;
+  team2_set2: any;
+  team1_set3: any;
+  team2_set3: any;
+  match_date: string;
+  tournament: number;
+  team_1: string;
+  team_2: string;
 }

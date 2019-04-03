@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ScoresService} from '../services/scores.service';
-import {ITeams} from '../interfaces/game.interface';
+import {MatSort, MatTableDataSource} from '@angular/material';
 
 
 @Component({
@@ -9,29 +9,30 @@ import {ITeams} from '../interfaces/game.interface';
   styleUrls: ['./points-table.component.scss']
 })
 export class PointsTableComponent implements OnInit {
+  displayedColumns: string[] =  ['name', 'seeding', 'robin'];
+  dataSource = new MatTableDataSource();
 
-  public teams: ITeams;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private scoresService: ScoresService,
   ) {
-    this.getTeams();
-
   }
-  displayedColumns: string[] =  ['name', 'seeding', 'robin'];
 
 
   ngOnInit() {
+    this.getTeams();
+
+    this.dataSource.sort = this.sort;
   }
 
   getTeams() {
     this.scoresService.getTeams().subscribe(res => {
-      this.teams = res;
+      this.dataSource.data = res;
     }, error => {
       const MyError: any = error.error;
       console.log(MyError);
     });
   }
-
 
 }

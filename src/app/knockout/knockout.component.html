@@ -2,8 +2,38 @@
   <app-ptc-toolbar></app-ptc-toolbar>
 
   <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
-    <mat-tab label="QUARTERS"> Content 1 </mat-tab>
-    <mat-tab label="SEMIS"> Content 2 </mat-tab>
-    <mat-tab label="FINALS"> Content 3 </mat-tab>
+    <mat-tab label="QUARTERS">
+      <mat-card *ngFor="let match of qf_matches">
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>{{match.team_1_name}} {{match.team1_set1}} {{match.team1_set2}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>{{match.team_2_name}} {{match.team2_set1}} {{match.team2_set2}}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="SEMIS">
+      <mat-card *ngFor="let match of sf_matches">
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>{{match.team_1_name}} {{match.team1_set1}} {{match.team1_set2}}</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>{{match.team_2_name}} {{match.team2_set1}} {{match.team2_set2}}</mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+    </mat-tab>
+    <mat-tab label="FINALS">
+      <mat-card *ngFor="let match of ff_matches">
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>{{match.team_1_name}} {{match.team1_set1}} {{match.team1_set2}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>{{match.team_2_name}} {{match.team2_set1}} {{match.team2_set2}}</mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
   </mat-tab-group>
 </section>

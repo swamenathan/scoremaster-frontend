@@ -14,8 +14,8 @@ import index from '@angular/cdk/schematics/ng-add';
 })
 export class ScoresComponent implements OnInit {
 
-  public teams: ITeams;
-  public matchs: IMatch;
+  public teams: ITeams[];
+  public matchs: IMatch[];
   public team1_selected: string;
   public team2_selected: string;
   public team1_name: string;
@@ -40,20 +40,9 @@ export class ScoresComponent implements OnInit {
 
 
   onSubmit() {
-    console.log('print inside onSubmit', this.team2_selected + ' ' + this.team1_selected);
     this.scoresService.getMatches(this.team1_selected, this.team2_selected).subscribe(res => {
       this.matchs = res;
-      console.log('teams = ', this.teams);
-
-      for (const team of this.teams) {
-        if (team.id === this.team1_selected) {
-          this.team1_name = team.team_name;
-        }
-        if (team.id === this.team2_selected) {
-          this.team2_name = team.team_name;
-        }
-      }
-
+      console.log('matchs = ', this.matchs);
       }, error => {
         const MyError: any = error.error;
         console.log(MyError);

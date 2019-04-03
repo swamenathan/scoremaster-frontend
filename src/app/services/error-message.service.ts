@@ -20,6 +20,9 @@ export class ErrorMessageService {
       case errorType.email:
         errorMessage = 'Invalid email type';
         break;
+      case errorType.set:
+        errorMessage = 'Invalid set type';
+        break;
 
     }
 

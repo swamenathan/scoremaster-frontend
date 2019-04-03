@@ -4,8 +4,16 @@ export interface ILoginDetails {
 }
 
 export interface IAuthInterface {
-  'user': any;
+  'user': IUser;
   'token': string;
+}
+
+export interface IUser {
+  'pk': string;
+  'username': string;
+  'email': string;
+  'first_name': string;
+  'last_name': string;
 }
 
 export interface ISignUpDetails {

@@ -1,19 +1,27 @@
 <section>
   <app-ptc-toolbar></app-ptc-toolbar>
+<mat-card>
+  <h1 class="card-items title-style">MATCHES</h1>
+  <mat-card-content class="card-items">
+    <mat-form-field>
+      <mat-select placeholder="Choose Team 1" [(value)]="team1_selected">
+        <mat-option [value]="0">None</mat-option>
+        <mat-option *ngFor="let team of teams" [value]="team.id">{{team.team_name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-select placeholder="Choose Team 2" [(value)]="team2_selected">
+        <mat-option [value]="0">None</mat-option>
+        <mat-option *ngFor="let team of teams" [value]="team.id">{{team.team_name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button type="submit" (click)="onSubmit()" color="primary">GET SCORE</button>
+  </mat-card-content>
 
-  <mat-form-field>
-    <mat-select placeholder="Choose Team 1" [(value)]="team1_selected">
-      <mat-option [value]="0">None</mat-option>
-      <mat-option *ngFor="let team of teams" [value]="team.id">{{team.team_name}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-select placeholder="Choose Team 2" [(value)]="team2_selected">
-      <mat-option [value]="0">None</mat-option>
-      <mat-option *ngFor="let team of teams" [value]="team.id">{{team.team_name}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-    <button mat-raised-button type="submit" (click)="onSubmit()" color="primary">Get Matches</button>
+</mat-card>
+
 </section>
 
 <section>
@@ -23,9 +31,9 @@
         <mat-panel-title> {{match.match_date}} </mat-panel-title>
       </mat-expansion-panel-header>
       <mat-list>
-        <mat-list-item>{{team1_name}} {{match.team1_set1}} {{match.team1_set2}} {{match.team1_set3}}</mat-list-item>
+        <mat-list-item>{{match.team_1_name}} {{match.team1_set1}} {{match.team1_set2}} {{match.team1_set3}}</mat-list-item>
         <mat-divider></mat-divider>
-        <mat-list-item>{{team2_name}} {{match.team2_set1}} {{match.team2_set2}} {{match.team2_set3}}</mat-list-item>
+        <mat-list-item>{{match.team_2_name}} {{match.team2_set1}} {{match.team2_set2}} {{match.team2_set3}}</mat-list-item>
       </mat-list>
     </mat-expansion-panel>
   </mat-accordion>

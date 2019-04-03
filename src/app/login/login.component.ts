@@ -44,9 +44,11 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['./points-table']);
       },
       error => {
-        const MyError: any = error.error;
-        console.log(MyError);
-      });
+        console.log('error = ', error);
+        const myError: any = error.error;
+        if (myError) {
+          console.log(myError);
+        } });
 
 
     console.log('submit button clicked username = ', loginDetail.email);
