@@ -14,7 +14,7 @@ import {
   MatDividerModule,
   MatTableModule,
   MatTabsModule,
-  MatDatepickerModule, MatNativeDateModule
+  MatDatepickerModule, MatNativeDateModule, MatSnackBarModule
 } from '@angular/material';
 import { MatCardModule, MatToolbarModule, MatIconModule, MatMenuModule, MatListModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { MatExpansionModule } from '@angular/material';
@@ -72,6 +72,7 @@ export function getToken() {
     MatTabsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSnackBarModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: getToken,

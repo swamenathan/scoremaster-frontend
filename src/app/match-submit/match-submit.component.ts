@@ -7,6 +7,7 @@ import {CredentialService} from '../services/credential.service';
 import {ScoresService} from '../services/scores.service';
 import {matchType} from '../models/data-models';
 import {formatDate} from '@angular/common';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-match-submit',
@@ -21,6 +22,7 @@ export class MatchSubmitComponent implements OnInit {
   public matchTypes: any;
   public team_2: string;
   public match_type: string;
+  public snackBarRef: any;
 
   constructor(
     private fb: FormBuilder,
@@ -28,6 +30,7 @@ export class MatchSubmitComponent implements OnInit {
     private errorMessageService: ErrorMessageService,
     private credentialService: CredentialService,
     private scoreService: ScoresService,
+    private snackBar: MatSnackBar
 
   ) {
 
@@ -84,7 +87,12 @@ export class MatchSubmitComponent implements OnInit {
     };
 
     console.log('score details = ', scoreDetails);
-    this.scoreService.postScore(scoreDetails).subscribe(res => { console.log('res = ', res); }, error => {});
+    this.scoreService.postScore(scoreDetails).subscribe(res => {
+      console.log('res = ', res);
+      this.snackBar.open('Score Submitted', 'Done', {verticalPosition: 'bottom', horizontalPosition: 'center', duration: 3000});
+      this.router.navigate(['./points-table']);
+
+    }, error => {});
 
   }
 
@@ -98,6 +106,7 @@ export class MatchSubmitComponent implements OnInit {
       return element;
     }
   }
+
 
 
 }

@@ -9,6 +9,7 @@ import {MatchSubmitComponent} from './match-submit/match-submit.component';
 import {AuthGuardService} from './services/auth-guard.service';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'points-table', pathMatch: 'full' },
   {path: 'login', component: LoginComponent},
   {path: 'sign-up', component: SignUpComponent},
   {path: 'scores', component: ScoresComponent, canActivate: [AuthGuardService]},

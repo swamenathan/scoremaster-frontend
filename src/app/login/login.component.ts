@@ -4,6 +4,7 @@ import {ILoginDetails} from '../interfaces/auth.interface';
 import {ErrorMessageService} from '../services/error-message.service';
 import {LoginService} from '../services/login.service';
 import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private errorMessageService: ErrorMessageService,
     private loginService: LoginService,
-    private router: Router) {
+    private router: Router,
+    private snackBar: MatSnackBar) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
