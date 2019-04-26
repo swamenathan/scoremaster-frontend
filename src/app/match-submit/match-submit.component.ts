@@ -9,6 +9,7 @@ import {matchType} from '../models/data-models';
 import {formatDate} from '@angular/common';
 import {MatSnackBar} from '@angular/material';
 import {ToastrService} from 'ngx-toastr';
+import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-match-submit',
@@ -72,7 +73,9 @@ export class MatchSubmitComponent implements OnInit {
 
   onSubmit() {
     const match_date = new Date(Date.parse(this.scoreForm.value.match_date));
-    const formatted_date = match_date.getFullYear() + '-' + match_date.getMonth() + '-' + match_date.getDate();
+    const month = match_date.getMonth() + 1;
+    const formatted_date = match_date.getFullYear() + '-' + month + '-' + match_date.getDate();
+
     const scoreDetails: IScore = {
       'match_type': this.match_type,
       'team1_set1': this.scoreForm.value.team1_set1,
