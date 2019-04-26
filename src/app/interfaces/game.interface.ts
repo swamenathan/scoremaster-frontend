@@ -44,3 +44,10 @@ export interface IScore {
   team_1: string;
   team_2: string;
 }
+
+export interface IChangePassword {
+  old_password: string;
+  new_password1: string;
+  new_password2: string;
+
+}

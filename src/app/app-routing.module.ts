@@ -7,6 +7,7 @@ import {PointsTableComponent} from './points-table/points-table.component';
 import {KnockoutComponent} from './knockout/knockout.component';
 import {MatchSubmitComponent} from './match-submit/match-submit.component';
 import {AuthGuardService} from './services/auth-guard.service';
+import {ChangePasswordComponent} from './change-password/change-password.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'points-table', pathMatch: 'full' },
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'scores', component: ScoresComponent, canActivate: [AuthGuardService]},
   {path: 'points-table', component: PointsTableComponent, canActivate: [AuthGuardService]},
   {path: 'knockout', component: KnockoutComponent, canActivate: [AuthGuardService]},
-  {path: 'submit-score', component: MatchSubmitComponent, canActivate: [AuthGuardService]}
+  {path: 'submit-score', component: MatchSubmitComponent, canActivate: [AuthGuardService]},
+  {path: 'change-pass', component: ChangePasswordComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

@@ -28,6 +28,7 @@ import { MatchSubmitComponent } from './match-submit/match-submit.component';
 import {AuthGuardService} from './services/auth-guard.service';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import {environment} from '../environments/environment';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 export function getToken() {
   const auth = JSON.parse(localStorage.getItem('auth'));
@@ -46,6 +47,7 @@ export function getToken() {
     ScoresComponent,
     KnockoutComponent,
     MatchSubmitComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
