@@ -29,6 +29,8 @@ import {AuthGuardService} from './services/auth-guard.service';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import {environment} from '../environments/environment';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { ToastrModule } from 'ngx-toastr';
+
 
 export function getToken() {
   const auth = JSON.parse(localStorage.getItem('auth'));
@@ -79,7 +81,8 @@ export function getToken() {
       config: {
         tokenGetter: getToken,
         whitelistedDomains: [environment.apiUrl],
-      }})
+      }}),
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthGuardService,
