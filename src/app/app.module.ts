@@ -82,7 +82,11 @@ export function getToken() {
         tokenGetter: getToken,
         whitelistedDomains: [environment.apiUrl],
       }}),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      preventDuplicates: true,
+      positionClass: 'toast-top-full-width'
+    })
   ],
   providers: [
     AuthGuardService,

@@ -8,6 +8,7 @@ import {ScoresService} from '../services/scores.service';
 import {matchType} from '../models/data-models';
 import {formatDate} from '@angular/common';
 import {MatSnackBar} from '@angular/material';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-match-submit',
@@ -30,7 +31,7 @@ export class MatchSubmitComponent implements OnInit {
     private errorMessageService: ErrorMessageService,
     private credentialService: CredentialService,
     private scoreService: ScoresService,
-    private snackBar: MatSnackBar
+    private toastMessage: ToastrService
 
   ) {
 
@@ -81,7 +82,7 @@ export class MatchSubmitComponent implements OnInit {
       'team1_set3': this.scoreForm.value.team1_set3,
       'team2_set3': this.scoreForm.value.team2_set3,
       'match_date': formatted_date,
-      'tournament': 1,
+      'tournament': 3,
       'team_1': this.myTeamId,
       'team_2': this.team_2
     };
@@ -89,10 +90,23 @@ export class MatchSubmitComponent implements OnInit {
     console.log('score details = ', scoreDetails);
     this.scoreService.postScore(scoreDetails).subscribe(res => {
       console.log('res = ', res);
-      this.snackBar.open('Score Submitted', 'Done', {verticalPosition: 'bottom', horizontalPosition: 'center', duration: 3000});
+      this.toastMessage.info('SCORE SUBMITTED');
       this.router.navigate(['./points-table']);
 
-    }, error => {});
+    }, error => {
+      let errorMessage: string;
+      const myError: any = error.error;
+
+      // non_field_errors
+      if (myError.non_field_errors && myError.non_field_errors.length > 0) {
+        errorMessage = myError.non_field_errors[0];
+      } else {
+        console.log('error = ', error.error);
+        errorMessage = 'Error 500';
+      }
+
+      this.toastMessage.error(errorMessage);
+    });
 
   }
 
@@ -106,7 +120,4 @@ export class MatchSubmitComponent implements OnInit {
       return element;
     }
   }
-
-
-
 }
