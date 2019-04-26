@@ -19,7 +19,8 @@ export class ChangePasswordComponent implements OnInit {
     private router: Router,
     private logOutService: LogOutService,
     private fb: FormBuilder,
-    private changePwdService: ChangePasswordService
+    private changePwdService: ChangePasswordService,
+    private logoutService: LogOutService
   ) {
     this.changePwdForm = this.fb.group({
       old_password: ['', Validators.required],
@@ -41,6 +42,10 @@ export class ChangePasswordComponent implements OnInit {
 
     this.changePwdService.changePassword(passwordDetails).subscribe(res => {
       console.log('Password has been changed');
+      this.logoutService.logout().subscribe(response => {
+        console.log('Logout successful');
+        this.router.navigate(['./login']);
+      });
     }, error1 => {
       console.log('An error has occured = ', error1);
     });

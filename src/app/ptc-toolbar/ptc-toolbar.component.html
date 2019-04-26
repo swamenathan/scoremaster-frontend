@@ -15,8 +15,12 @@
 
   <span class="toolbar-style">PTC SCORER</span>
   <span>
-    <button mat-icon-button type="submit" (click)="onLogout()">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>account_circle</mat-icon>
+      <mat-menu #menu="matMenu">
+      <button mat-menu-item type="submit" (click)="onLogout()">LOG OUT</button>
+      <button mat-menu-item [routerLink]="['/change-pass']">CHANGE PASSWORD</button>
+    </mat-menu>
     </button>
   </span>
 </mat-toolbar>
