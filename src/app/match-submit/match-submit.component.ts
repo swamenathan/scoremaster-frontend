@@ -24,7 +24,7 @@ export class MatchSubmitComponent implements OnInit {
   public matchTypes: any;
   public team_2: string;
   public match_type: string;
-  public snackBarRef: any;
+  public tour_id: any;
 
   constructor(
     private fb: FormBuilder,
@@ -52,6 +52,10 @@ export class MatchSubmitComponent implements OnInit {
   ngOnInit() {
     this.matchTypes = matchType;
     const user: any =  this.credentialService.getUser;
+
+    this.scoreService.getTours().subscribe(response => {
+        this.tour_id = response[0].id;
+    }, error1 => {});
 
     this.scoreService.getTeam(user.pk).subscribe(
       res => {
@@ -85,7 +89,7 @@ export class MatchSubmitComponent implements OnInit {
       'team1_set3': this.scoreForm.value.team1_set3,
       'team2_set3': this.scoreForm.value.team2_set3,
       'match_date': formatted_date,
-      'tournament': 3,
+      'tournament': this.tour_id,
       'team_1': this.myTeamId,
       'team_2': this.team_2
     };

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CredentialService} from './credential.service';
 import {environment} from '../../environments/environment';
-import {IMatch, IScore, ITeams} from '../interfaces/game.interface';
+import {IMatch, IScore, ITeams, ITours} from '../interfaces/game.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +52,11 @@ export class ScoresService {
     const options = this.setHeaders();
 
     return this.http.post<IScore>(environment.matchesUrl, score, options);
+  }
+
+  getTours() {
+    const options = this.setHeaders();
+
+    return this.http.get<ITours>(environment.toursUrl, options);
   }
 }

@@ -51,3 +51,11 @@ export interface IChangePassword {
   new_password2: string;
 
 }
+
+export interface ITours {
+  id: string;
+  tour_name: string;
+  tour_type: string;
+  tour_start_date: string;
+  tour_end_date: string;
+}

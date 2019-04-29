@@ -16,6 +16,7 @@ export const environment = {
   matchUrl: apiUrl + '/match/',
   matchesUrl: apiUrl + '/matches/',
   changePassUrl: apiUrl + '/auth/password/change/',
+  toursUrl: apiUrl + '/tours/',
 };
 
 /*

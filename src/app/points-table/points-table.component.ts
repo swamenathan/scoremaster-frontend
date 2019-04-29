@@ -9,8 +9,8 @@ import {MatSort, MatTableDataSource} from '@angular/material';
   styleUrls: ['./points-table.component.scss']
 })
 export class PointsTableComponent implements OnInit {
-  displayedColumns: string[] =  ['name', 'seeding', 'robin'];
-  dataSource = new MatTableDataSource();
+  displayedColumns: string[] =  ['team_name', 'rr_points'];
+  public dataSource: any;
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -22,13 +22,12 @@ export class PointsTableComponent implements OnInit {
 
   ngOnInit() {
     this.getTeams();
-
-    this.dataSource.sort = this.sort;
   }
 
   getTeams() {
     this.scoresService.getTeams().subscribe(res => {
-      this.dataSource.data = res;
+      this.dataSource = new MatTableDataSource(res);
+      this.dataSource.sort = this.sort;
     }, error => {
       const MyError: any = error.error;
       console.log(MyError);
