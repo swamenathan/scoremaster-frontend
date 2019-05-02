@@ -10,6 +10,7 @@ import {formatDate} from '@angular/common';
 import {MatSnackBar} from '@angular/material';
 import {ToastrService} from 'ngx-toastr';
 import {any} from 'codelyzer/util/function';
+import {validate} from 'codelyzer/walkerFactory/walkerFn';
 
 @Component({
   selector: 'app-match-submit',
@@ -37,14 +38,13 @@ export class MatchSubmitComponent implements OnInit {
   ) {
 
     this.scoreForm = this.fb.group({
-      team1_set1: ['', [Validators.required, Validators.maxLength(2), Validators.pattern('0-9')]],
-      team2_set1: ['', [Validators.required, Validators.maxLength(2), Validators.pattern('0-9')]],
-      team1_set2: ['', [Validators.maxLength(2), Validators.pattern('0-9')]],
-      team2_set2: ['', [Validators.maxLength(2), Validators.pattern('0-9')]],
-      team1_set3: ['', [Validators.maxLength(2), Validators.pattern('0-9')]],
-      team2_set3: ['', [Validators.maxLength(2), Validators.pattern('0-9')]],
-      match_date: ['', [Validators.required]],
-      match_type: ['', [Validators.required]]
+      team1_set1: ['', [Validators.required, Validators.max(12)]],
+      team2_set1: ['', [Validators.required, Validators.max(12)]],
+      team1_set2: ['', Validators.max(7)],
+      team2_set2: ['', Validators.max(7)],
+      team1_set3: ['', Validators.max(7)],
+      team2_set3: ['', Validators.max(7)],
+      match_date: ['', [Validators.required]]
     });
 
   }
@@ -72,7 +72,6 @@ export class MatchSubmitComponent implements OnInit {
         );
       }
     );
-
   }
 
   onSubmit() {
@@ -115,6 +114,9 @@ export class MatchSubmitComponent implements OnInit {
       this.toastMessage.error(errorMessage);
     });
 
+    // console.log('invalid = ', this.findInvalidControls());
+
+
   }
 
   getErrorMessage(controlName: string) {
@@ -126,5 +128,16 @@ export class MatchSubmitComponent implements OnInit {
     if (element.team_name !== team_name) {
       return element;
     }
+  }
+
+  public findInvalidControls() {
+    const invalid = [];
+    const controls = this.scoreForm.controls;
+    for (const name in controls) {
+      if (controls[name].invalid) {
+        invalid.push(name);
+      }
+    }
+    return invalid;
   }
 }

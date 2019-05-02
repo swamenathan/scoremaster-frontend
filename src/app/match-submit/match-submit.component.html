@@ -36,19 +36,19 @@
           <td>
             <mat-form-field class="input-style">
               <input matInput type="text" formControlName="team1_set1" placeholder="1" required >
-              <!--<mat-error *ngIf="scoreForm.controls['team1_set1'].invalid">{{getErrorMessage('set')}}</mat-error>-->
+              <mat-error *ngIf="scoreForm.controls['team1_set1'].invalid">{{getErrorMessage('team1_set1')}}</mat-error>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="input-style">
               <input matInput type="text" formControlName="team1_set2" placeholder="2" >
-              <!--<mat-error *ngIf="scoreForm.controls['team1_set2'].invalid">{{getErrorMessage('set')}}</mat-error>-->
+              <mat-error *ngIf="scoreForm.controls['team1_set2'].invalid">{{getErrorMessage('team1_set2')}}</mat-error>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="input-style">
               <input matInput type="text" formControlName="team1_set3" placeholder="3" >
-              <!--<mat-error *ngIf="scoreForm.controls['team1_set3'].invalid">{{getErrorMessage('set')}}</mat-error>-->
+              <mat-error *ngIf="scoreForm.controls['team1_set3'].invalid">{{getErrorMessage('team1_set3')}}</mat-error>
             </mat-form-field>
           </td>
         </tr>
@@ -59,19 +59,19 @@
           <td>
             <mat-form-field class="input-style">
               <input matInput type="text" formControlName="team2_set1" placeholder="1" required>
-              <!--<mat-error *ngIf="scoreForm.controls['team2_set1'].invalid">{{getErrorMessage('set')}}</mat-error>-->
+              <mat-error *ngIf="scoreForm.controls['team2_set1'].invalid">{{getErrorMessage('team2_set1')}}</mat-error>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="input-style">
               <input matInput type="text" formControlName="team2_set2" placeholder="2" >
-              <!--<mat-error *ngIf="scoreForm.controls['team2_set2'].invalid">{{getErrorMessage('set')}}</mat-error>-->
+              <mat-error *ngIf="scoreForm.controls['team2_set2'].invalid">{{getErrorMessage('team2_set2')}}</mat-error>
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="input-style">
               <input matInput type="text" formControlName="team2_set3" placeholder="3" >
-              <!--<mat-error *ngIf="scoreForm.controls['team2_set3'].invalid">{{getErrorMessage('set')}}</mat-error>-->
+              <mat-error *ngIf="scoreForm.controls['team2_set3'].invalid">{{getErrorMessage('team2_set3')}}</mat-error>
             </mat-form-field>
           </td>
         </tr>
@@ -86,7 +86,7 @@
       </mat-card-content>
 
       <mat-card-actions class="card-items">
-        <button mat-raised-button type="submit" (click)="onSubmit()" color="primary">SUBMIT</button>
+        <button mat-raised-button type="submit" (click)="onSubmit()" color="primary" [disabled]="!(scoreForm.valid)">SUBMIT</button>
       </mat-card-actions>
 
 

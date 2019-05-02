@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {IChangePassword} from '../interfaces/game.interface';
 import {HttpClient} from '@angular/common/http';
 import {ChangePasswordService} from '../services/change-password.service';
+import {ErrorMessageService} from '../services/error-message.service';
 
 @Component({
   selector: 'app-change-password',
@@ -20,12 +21,13 @@ export class ChangePasswordComponent implements OnInit {
     private logOutService: LogOutService,
     private fb: FormBuilder,
     private changePwdService: ChangePasswordService,
-    private logoutService: LogOutService
+    private logoutService: LogOutService,
+    private errorMessageService: ErrorMessageService
   ) {
     this.changePwdForm = this.fb.group({
       old_password: ['', Validators.required],
-      new_password1: ['', Validators.required],
-      new_password2: ['', Validators.required]
+      new_password1: ['', [Validators.required, Validators.minLength(8)]],
+      new_password2: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
@@ -50,5 +52,9 @@ export class ChangePasswordComponent implements OnInit {
       console.log('An error has occured = ', error1);
     });
 
+  }
+
+  getErrorMessage(controlName: string) {
+    return this.errorMessageService.displayMessage(this.changePwdForm, controlName);
   }
 }
